@@ -4,7 +4,7 @@ var connect = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "",
-  database: "courrier",
+  database: "ticket",
 });
 
 function verify() {
