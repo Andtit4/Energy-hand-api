@@ -11,7 +11,7 @@ var Noc = function (noc) {
     (this.telephone_noc = noc.telephone_noc);
 };
 
-Noc.auth = function (email, pass) {
+Noc.auth = function (email, pass, result) {
   connect.query(
     "SELECT * FROM noc WHERE email_noc = ? AND password_noc = ?",
     [email, pass],
@@ -20,8 +20,13 @@ Noc.auth = function (email, pass) {
         console.log("[-] An error occurred : " + err);
         result(err, null);
       } else {
-        console.log("[+] Success : ", res);
-        result(err, res, null);
+        console.log("[+] Success : ", res[0]);
+        if (res[0] == undefined) {
+          console.log("first");
+          result(err, null);
+        } else {
+          result(err, res, null);
+        }
       }
     }
   );
