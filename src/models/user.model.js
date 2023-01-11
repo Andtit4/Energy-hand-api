@@ -2,18 +2,18 @@
 
 const { connect } = require("../config/db");
 
-var Noc = function (noc) {
-  (this.id_noc = noc.id_noc),
-    (this.email_noc = noc.email_noc),
-    (this.password_noc = noc.password_noc),
-    (this.nom_noc = noc.nom_noc),
-    (this.prenom_noc = noc.prenom_noc),
-    (this.telephone_noc = noc.telephone_noc);
+var User = function (user) {
+  this.id_user = user.id_user;
+  this.nom_user = user.nom_user;
+  this.prenom_user = user.prenom_user;
+  this.email_user = user.email_user;
+  this.password_user = user.password_user;
+  this.telephone_user = user.telephone_user;
 };
 
-Noc.auth = function (email, pass, result) {
+User.auth = function (email, pass, result) {
   connect.query(
-    "SELECT * FROM noc WHERE email_noc = ? AND password_noc = ?",
+    "SELECT * FROM user WHERE email_user = ? AND password_user = ?",
     [email, pass],
     function (err, res) {
       if (err) {
@@ -23,11 +23,10 @@ Noc.auth = function (email, pass, result) {
         console.log("[+] Success : ", res[0]);
         if (res[0] == undefined) {
           console.log("first");
-          // res[0] = "notnoc";
           res = {
-            error: "notnoc",
+            error: "notuser",
           };
-          console.log("[-] Not a noc user");
+          console.log("[-] Not a user");
           result(err, res, null);
         } else {
           result(err, res, null);
@@ -37,4 +36,4 @@ Noc.auth = function (email, pass, result) {
   );
 };
 
-module.exports = { Noc };
+module.exports = { User };

@@ -2,18 +2,18 @@
 
 const { connect } = require("../config/db");
 
-var Noc = function (noc) {
-  (this.id_noc = noc.id_noc),
-    (this.email_noc = noc.email_noc),
-    (this.password_noc = noc.password_noc),
-    (this.nom_noc = noc.nom_noc),
-    (this.prenom_noc = noc.prenom_noc),
-    (this.telephone_noc = noc.telephone_noc);
+var Sup = function (sup) {
+  this.id_sup = sup.id_sup;
+  this.nom_sup = sup.nom_sup;
+  this.prenom_sup = sup.prenom_sup;
+  this.email_sup = sup.email_sup;
+  this.password_sup = sup.password_sup;
+  this.telephone_sup = sup.telephone_sup;
 };
 
-Noc.auth = function (email, pass, result) {
+Sup.auth = function (email, pass, result) {
   connect.query(
-    "SELECT * FROM noc WHERE email_noc = ? AND password_noc = ?",
+    "SELECT * FROM superviseur WHERE email_sup = ? AND password_sup = ?",
     [email, pass],
     function (err, res) {
       if (err) {
@@ -23,9 +23,8 @@ Noc.auth = function (email, pass, result) {
         console.log("[+] Success : ", res[0]);
         if (res[0] == undefined) {
           console.log("first");
-          // res[0] = "notnoc";
           res = {
-            error: "notnoc",
+            error: "notsup",
           };
           console.log("[-] Not a noc user");
           result(err, res, null);
@@ -37,4 +36,4 @@ Noc.auth = function (email, pass, result) {
   );
 };
 
-module.exports = { Noc };
+module.exports = { Sup };
