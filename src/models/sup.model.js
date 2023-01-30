@@ -23,7 +23,7 @@ Sup.auth = function (email, pass, result) {
         console.log("[+] Success : ", res[0]);
         if (res[0] == undefined) {
           console.log("first");
-          res = {
+          res[0] = {
             error: "notsup",
           };
           console.log("[-] Not a noc user");

@@ -23,8 +23,8 @@ User.auth = function (email, pass, result) {
         console.log("[+] Success : ", res[0]);
         if (res[0] == undefined) {
           console.log("first");
-          res = {
-            error: "notuser",
+          res[0] = {
+            error: "Email ou mot de passe incorrect",
           };
           console.log("[-] Not a user");
           result(err, res, null);

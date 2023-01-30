@@ -24,8 +24,8 @@ Noc.auth = function (email, pass, result) {
         if (res[0] == undefined) {
           console.log("first");
           // res[0] = "notnoc";
-          res = {
-            error: "notnoc",
+          res[0] = {
+            error: "Email ou mot de passe incorrect",
           };
           console.log("[-] Not a noc user");
           result(err, res, null);

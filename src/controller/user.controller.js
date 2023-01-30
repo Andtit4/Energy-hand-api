@@ -3,7 +3,7 @@
 const { User } = require("../models/user.model");
 
 exports.auth = function (req, res) {
-  console.log("[+] Controller Auth for Supervisor");
+  console.log("[+] Controller Auth for User");
   const email = req.query.email_noc;
   const password = req.query.password_noc;
   console.log("[+] Email: " + email);
