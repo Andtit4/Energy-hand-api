@@ -1,11 +1,20 @@
 "use strict";
-
+const jwt = require("jsonwebtoken");
 const { Noc } = require("../models/noc.model");
 
 exports.auth = function (req, res) {
   console.log("[+] Controller Auth");
-  const email = req.query.email_noc;
-  const password = req.query.password_noc;
+  const email = req.body.email_noc;
+  const password = req.body.password_noc;
+
+  const token = jwt.sign(
+    {
+      id: email,
+    },
+    "jwtPrivateToken",
+    { expiresIn: "5m" }
+  );
+
   console.log("[+] Email: " + email);
   console.log("[+] Password: " + password);
 
@@ -14,7 +23,7 @@ exports.auth = function (req, res) {
       res.send("[-] An error occured " + err);
       console.log("[-] An error occured " + err);
     } else {
-      res.send(noc);
+      res.send({ noc: noc, token: token });
     }
   });
 };
