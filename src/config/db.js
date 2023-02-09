@@ -1,10 +1,10 @@
 const mysql = require('mysql');
 
 var connect = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "ticket",
+  host: "mysql-testdep.alwaysdata.net",
+  user: "testdep_useroot",
+  password: "Motdep@sse2022",
+  database: "testdep_energy",
 });
 
 function verify() {
