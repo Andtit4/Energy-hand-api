@@ -9,5 +9,6 @@ router.get("/delete", demandeController.delete_by_id);
 router.get("/notified/open", demandeController.notified);
 router.get("/notified/end", demandeController.notified_end);
 router.get("/notified/not", demandeController.notified_not);
+router.get("/total", demandeController.nb);
 
 module.exports = router;

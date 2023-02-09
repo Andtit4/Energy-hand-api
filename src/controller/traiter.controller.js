@@ -52,3 +52,15 @@ exports.delete_by_id = function (req, res) {
     }
   });
 };
+
+exports.nb = function (req, res) {
+  console.log("Controller nb demande");
+  Traiter.nb(function (err, nb) {
+    if (err) {
+      res.send("[-] An error occured " + err);
+      console.log("[-] An error occured " + err);
+    } else {
+      res.send(nb);
+    }
+  });
+};

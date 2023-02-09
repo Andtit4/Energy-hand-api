@@ -40,6 +40,21 @@ Traiter.all = function (result) {
   });
 };
 
+Traiter.nb = function (result) {
+  connect.query("SELECT COUNT(*) AS nb FROM traiter", function (err, res) {
+    if (err) {
+      console.log("[-] An error occurred : " + err);
+      res[0] = {
+        error: err,
+      };
+      result(err, res, null);
+    } else {
+      console.log("[+] Result : " + res);
+      result(err, res, null);
+    }
+  });
+};
+
 Traiter.byEmail = function (email, result) {
   connect.query(
     "SELECT * FROM traiter WHERE email_user = ?",

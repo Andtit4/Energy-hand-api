@@ -78,7 +78,7 @@ Demande.delete_by_id = function (id, result) {
   );
 };
 
-Demande.notified = function(email, result) {
+Demande.notified = function (email, result) {
   connect.query(
     "SELECT * FROM traiter WHERE notified = 1 AND email_user = ? and showed = false",
     email,
@@ -97,7 +97,7 @@ Demande.notified = function(email, result) {
   );
 };
 
-Demande.notified_end = function(showed, email, result) {
+Demande.notified_end = function (showed, email, result) {
   connect.query(
     "UPDATE traiter SET showed = ? WHERE email_user = ? ",
     [showed, email],
@@ -132,6 +132,18 @@ Demande.notified_not = function (result) {
       }
     }
   );
+};
+
+Demande.nb = function (result) {
+  connect.query("SELECT COUNT(*) AS nb FROM demande", function (err, res) {
+    if (err) {
+      console.log("Error: ", err);
+      result(err, res, null);
+    } else {
+      console.log("[+] Result : " + res);
+      result(err, res, null);
+    }
+  });
 };
 
 module.exports = { Demande };
