@@ -36,7 +36,7 @@ User.auth = function (email, pass, result) {
   );
 };
 
-User.create = function (nom, prenom, email, numero) {
+User.create = function (nom, prenom, email, numero, result) {
   connect.query(
     "INSERT INTO user (nom_user, prenom_user, email_user, telephone_user) VALUES (?,?,?,?)"[
       (nom, prenom, email, numero)
