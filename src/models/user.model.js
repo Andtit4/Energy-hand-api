@@ -38,15 +38,29 @@ User.auth = function (email, pass, result) {
 
 User.create = function (nom, prenom, email, numero, result) {
   connect.query(
-    "INSERT INTO user (nom_user, prenom_user, email_user, telephone_user) VALUES (?,?,?,?)"[
-      (nom, prenom, email, numero)
-    ],
+    "INSERT INTO user (nom_user, prenom_user, email_user, telephone_user) VALUES (?,?,?,?)",
+    [nom, prenom, email, numero],
     function (err, res) {
       if (err) {
         console.log("Error: ", err);
         result(err, res, null);
       } else {
-        console.log("[+] Result : " + res);
+        console.log("[+] Result : " + res["insertId"]);
+        result(err, res, null);
+      }
+    }
+  );
+};
+User.update = function (pass, id, result) {
+  connect.query(
+    "UPDATE user SET password_user = ? WHERE id_user = ?",
+    [pass, id],
+    function (err, res) {
+      if (err) {
+        console.log("Error: ", err);
+        result(err, res, null);
+      } else {
+        console.log("[+] Result : " + res["insertId"]);
         result(err, res, null);
       }
     }
