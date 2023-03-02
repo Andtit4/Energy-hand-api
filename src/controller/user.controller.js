@@ -20,10 +20,10 @@ exports.auth = function (req, res) {
 };
 
 exports.create = function (req, res) {
-  const nom = req.query.nom_user;
-  const prenom = req.query.prenom_user;
-  const email = req.query.email_user;
-  const numero = req.query.telephone_user;
+  const nom = req.body.nom_user;
+  const prenom = req.body.prenom_user;
+  const email = req.body.email_user;
+  const numero = req.body.telephone_user;
 
   User.create(nom, prenom, email, numero, function (err, user) {
     if (err) {
