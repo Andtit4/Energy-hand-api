@@ -36,4 +36,21 @@ User.auth = function (email, pass, result) {
   );
 };
 
+User.create = function (nom, prenom, email, numero) {
+  connect.query(
+    "INSERT INTO user (nom_user, prenom_user, email_user, telephone_user) VALUES (?,?,?,?)"[
+      (nom, prenom, email, numero)
+    ],
+    function (err, res) {
+      if (err) {
+        console.log("Error: ", err);
+        result(err, res, null);
+      } else {
+        console.log("[+] Result : " + res);
+        result(err, res, null);
+      }
+    }
+  );
+};
+
 module.exports = { User };
