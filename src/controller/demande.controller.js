@@ -3,15 +3,29 @@ const { Demande } = require("../models/demande.model");
 
 exports.create = function (req, res) {
   console.log("[+] Controller Create demande");
-  const dmde = new Demande(req.body);
-  Demande.create(dmde, function (err, demande) {
-    if (err) {
-      res.send("[-] An error occured " + err);
-      console.log("[-] An error occured " + err);
-    } else {
-      res.send(demande);
+  const type_demande = req.body.type_demande;
+  const site = req.body.site;
+  const equipement = req.body.equipement;
+  const quantite = req.body.quantite;
+  const notified = req.body.notified;
+  const id_user = req.body.id_user;
+  // const dmde = new Demande(req.body);
+  Demande.create(
+    type_demande,
+    site,
+    equipement,
+    quantite,
+    notified,
+    id_user,
+    function (err, demande) {
+      if (err) {
+        res.send("[-] An error occured " + err);
+        console.log("[-] An error occured " + err);
+      } else {
+        res.send(demande);
+      }
     }
-  });
+  );
 };
 
 exports.all = function (req, res) {

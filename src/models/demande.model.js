@@ -10,19 +10,31 @@ var Demande = function (demande) {
   this.email_user = demande.email_user;
 };
 
-Demande.create = function (newDmde, result) {
-  connect.query("INSERT INTO demande SET ?", newDmde, function (err, res) {
-    if (err) {
-      console.log("[-] An error occurred : " + err);
-      res[0] = {
-        error: err,
-      };
-      result(err, res, null);
-    } else {
-      console.log("[+] Result : " + res);
-      result(err, res, null);
+Demande.create = function (
+  type_demande,
+  site,
+  equipement,
+  quantite,
+  notified,
+  id_user,
+  result
+) {
+  connect.query(
+    "INSERT INTO demande (type_demande, site, equipement, quantite, notified, id_user) VALUES (?,?,?,?,?,?)",
+    [type_demande, site, equipement, quantite, notified, id_user],
+    function (err, res) {
+      if (err) {
+        console.log("[-] An error occurred : " + err);
+        res[0] = {
+          error: err,
+        };
+        result(err, res, null);
+      } else {
+        console.log("[+] Result : " + res);
+        result(err, res, null);
+      }
     }
-  });
+  );
 };
 
 Demande.all = function (result) {
