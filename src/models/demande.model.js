@@ -17,11 +17,24 @@ Demande.create = function (
   quantite,
   notified,
   id_user,
+  mounth,
+  day,
+  year,
   result
 ) {
   connect.query(
-    "INSERT INTO demande (type_demande, site, equipement, quantite, notified, id_user) VALUES (?,?,?,?,?,?)",
-    [type_demande, site, equipement, quantite, notified, id_user],
+    "INSERT INTO demande (type_demande, site, equipement, quantite, notified, id_user, mounth, day, year) VALUES (?,?,?,?,?,?,?,?,?)",
+    [
+      type_demande,
+      site,
+      equipement,
+      quantite,
+      notified,
+      id_user,
+      mounth,
+      day,
+      year,
+    ],
     function (err, res) {
       if (err) {
         console.log("[-] An error occurred : " + err);

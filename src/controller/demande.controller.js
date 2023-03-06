@@ -9,6 +9,10 @@ exports.create = function (req, res) {
   const quantite = req.body.quantite;
   const notified = req.body.notified;
   const id_user = req.body.id_user;
+
+  const mounth = req.body.mounth;
+  const day = req.body.day;
+  const year = req.body.year;
   // const dmde = new Demande(req.body);
   Demande.create(
     type_demande,
@@ -17,6 +21,9 @@ exports.create = function (req, res) {
     quantite,
     notified,
     id_user,
+    mounth,
+    day,
+    year,
     function (err, demande) {
       if (err) {
         res.send("[-] An error occured " + err);
