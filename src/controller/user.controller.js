@@ -48,3 +48,15 @@ exports.update = function (req, res) {
     }
   });
 };
+
+exports.getById = function (req, res) {
+  const id = req.query.id_user;
+  User.getById(id, function (err, user) {
+    if (err) {
+      res.send("[-] An error occured " + err);
+      console.log("[-] An error occured " + err);
+    } else {
+      res.send(user);
+    }
+  });
+};

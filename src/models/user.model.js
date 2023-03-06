@@ -67,4 +67,20 @@ User.update = function (pass, id, result) {
   );
 };
 
+User.getById = function (id_user, result) {
+  connect.query(
+    "SELECT * FROM user WHERE id_user = ?",
+    id_user,
+    function (err, res) {
+      if (err) {
+        console.log("Error: ", err);
+        result(err, res, null);
+      } else {
+        console.log("[+] Result : " + res);
+        result(err, res, null);
+      }
+    }
+  );
+};
+
 module.exports = { User };
