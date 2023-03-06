@@ -61,6 +61,18 @@ exports.byEmail = function (req, res) {
   });
 };
 
+exports.getById = function (req, res) {
+  const id_user = req.query.id_user;
+  Demande.getById(id_user, function (err, demande) {
+    if (err) {
+      res.send("[-] An error occured " + err);
+      console.log("[-] An error occured " + err);
+    } else {
+      res.send(demande);
+    }
+  });
+};
+
 exports.delete_by_id = function (req, res) {
   console.log("[+] Controller get delete demande by id");
   const id_demande = req.query.id_demande;

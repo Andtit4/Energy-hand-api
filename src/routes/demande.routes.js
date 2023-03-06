@@ -4,6 +4,7 @@ const demandeController = require("../controller/demande.controller");
 
 router.post("/create", demandeController.create);
 router.get("/all", demandeController.all);
+router.get("", demandeController.getById);
 router.get("/get", demandeController.byEmail);
 router.get("/delete", demandeController.delete_by_id);
 router.get("/notified/open", demandeController.notified);

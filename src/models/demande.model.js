@@ -65,6 +65,25 @@ Demande.all = function (result) {
   });
 };
 
+Demande.getById = function (id_user, result) {
+  connect.query(
+    "SELECT * FROM demande WHERE id_user = ?",
+    id_user,
+    function (err, res) {
+      if (err) {
+        console.log("[-] An error occurred : " + err);
+        res[0] = {
+          error: err,
+        };
+        result(err, res, null);
+      } else {
+        console.log("[+] Result : " + res);
+        result(err, res, null);
+      }
+    }
+  );
+};
+
 Demande.byEmail = function (email, result) {
   connect.query(
     "SELECT * FROM demande WHERE email_user = ?",
