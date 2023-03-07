@@ -192,7 +192,7 @@ Demande.nb = function (result) {
   });
 };
 
-Demande.updateStatus = function (id_user, status, result) {
+Demande.updateStatus = function (status, id_user, result) {
   connect.query(
     "UPDATE demande SET status = ? WHERE id_user = ?",
     [status, id_user],
