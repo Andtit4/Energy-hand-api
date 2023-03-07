@@ -141,8 +141,8 @@ exports.nb = function (req, res) {
 
 exports.updateStatus = function (req, res) {
   const status = req.query.status;
-  const id_user = req.query.id_demande;
-  Demande.updateStatus(status, id_user, function (err, demande) {
+  const id_demande = req.query.id_demande;
+  Demande.updateStatus(status, id_demande, function (err, demande) {
     if (err) {
       res.send("[-] An error occured " + err);
       console.log("[-] An error occured " + err);

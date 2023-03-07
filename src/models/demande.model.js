@@ -195,7 +195,7 @@ Demande.nb = function (result) {
 Demande.updateStatus = function (status, id_demande, result) {
   connect.query(
     "UPDATE demande SET status = ? WHERE id_user = ?",
-    [status, id_user],
+    [status, id_demande],
     function (err, res) {
       if (err) {
         console.log("Error: ", err);
