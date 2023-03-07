@@ -35,7 +35,7 @@ Demande.create = function (
       mounth,
       day,
       year,
-      status
+      status,
     ],
     function (err, res) {
       if (err) {
@@ -190,6 +190,22 @@ Demande.nb = function (result) {
       result(err, res, null);
     }
   });
+};
+
+Demande.updateStatus = function (id_user, status, result) {
+  connect.query(
+    "UPDATE demande SET status = ? WHERE id_user = ?",
+    [status, id_user],
+    function (err, res) {
+      if (err) {
+        console.log("Error: ", err);
+        result(err, res, null);
+      } else {
+        console.log("[+] Result : " + res);
+        result(err, res, null);
+      }
+    }
+  );
 };
 
 module.exports = { Demande };

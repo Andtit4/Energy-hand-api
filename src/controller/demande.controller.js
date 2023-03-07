@@ -138,3 +138,16 @@ exports.nb = function (req, res) {
     }
   });
 };
+
+exports.updateStatus = function (req, res) {
+  const status = req.body.status;
+  const id_user = req.body.id_user;
+  Demande.updateStatus(status, id_user, function (err, demande) {
+    if (err) {
+      res.send("[-] An error occured " + err);
+      console.log("[-] An error occured " + err);
+    } else {
+      res.send(demande);
+    }
+  });
+};
