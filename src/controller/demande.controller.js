@@ -13,6 +13,7 @@ exports.create = function (req, res) {
   const mounth = req.body.mounth;
   const day = req.body.day;
   const year = req.body.year;
+  const status = req.body.status;
   // const dmde = new Demande(req.body);
   Demande.create(
     type_demande,
@@ -24,6 +25,7 @@ exports.create = function (req, res) {
     mounth,
     day,
     year,
+    status,
     function (err, demande) {
       if (err) {
         res.send("[-] An error occured " + err);
