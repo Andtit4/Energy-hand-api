@@ -8,7 +8,7 @@ var connect = mysql.createPool({
   database: process.env.DB_NAME || 'testdep_noc',
   queueLimit: 0,
   waitForConnections: true,
-  connectionLimit: 50,
+  connectionLimit: 5000,
 });
 
 /* var connect = mysql.createConnection({
