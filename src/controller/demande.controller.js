@@ -14,7 +14,7 @@ exports.create = function (req, res) {
   const day = req.body.day;
   const year = req.body.year;
   const status = req.body.status;
-  const time = req.body.time
+  const time = req.body.time;
   // const dmde = new Demande(req.body);
   Demande.create(
     type_demande,
@@ -156,6 +156,17 @@ exports.updateStatus = function (req, res) {
 
 exports.getSiteHs = function (req, res) {
   Demande.getSiteHs(function (err, demande) {
+    if (err) {
+      res.send("[-] An error occured " + err);
+      console.log("[-] An error occured " + err);
+    } else {
+      res.send(demande);
+    }
+  });
+};
+
+exports.getNbHs = function (req, res) {
+  Demande.getNbHs(function (err, demande) {
     if (err) {
       res.send("[-] An error occured " + err);
       console.log("[-] An error occured " + err);

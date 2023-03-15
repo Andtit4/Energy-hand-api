@@ -13,5 +13,6 @@ router.get("/notified/end", demandeController.notified_end);
 router.get("/notified/not", demandeController.notified_not);
 router.get("/total", demandeController.nb);
 router.get("/site/hs", demandeController.getSiteHs);
+router.get("/site/nb/hs", demandeController.getNbHs);
 
 module.exports = router;
