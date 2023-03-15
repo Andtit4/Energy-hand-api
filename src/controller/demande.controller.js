@@ -14,6 +14,7 @@ exports.create = function (req, res) {
   const day = req.body.day;
   const year = req.body.year;
   const status = req.body.status;
+  const time = req.body.time
   // const dmde = new Demande(req.body);
   Demande.create(
     type_demande,
@@ -26,6 +27,7 @@ exports.create = function (req, res) {
     day,
     year,
     status,
+    time,
     function (err, demande) {
       if (err) {
         res.send("[-] An error occured " + err);

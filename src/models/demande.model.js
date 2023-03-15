@@ -21,10 +21,11 @@ Demande.create = function (
   day,
   year,
   status,
+  time,
   result
 ) {
   connect.query(
-    "INSERT INTO demande (type_demande, site, equipement, quantite, notified, id_user, mounth, day, year, status) VALUES (?,?,?,?,?,?,?,?,?, ?)",
+    "INSERT INTO demande (type_demande, site, equipement, quantite, notified, id_user, mounth, day, year, status, time) VALUES (?,?,?,?,?,?,?,?,?, ?, ?)",
     [
       type_demande,
       site,
