@@ -151,3 +151,14 @@ exports.updateStatus = function (req, res) {
     }
   });
 };
+
+exports.getSiteHs = function (req, res) {
+  Demande.getSiteHs(function (err, demande) {
+    if (err) {
+      res.send("[-] An error occured " + err);
+      console.log("[-] An error occured " + err);
+    } else {
+      res.send(demande);
+    }
+  });
+};

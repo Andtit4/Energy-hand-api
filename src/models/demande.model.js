@@ -208,4 +208,19 @@ Demande.updateStatus = function (status, id_demande, result) {
   );
 };
 
+Demande.getSiteHs = function (result) {
+  connect.query(
+    "SELECT * FROM demande WHERE type_demande =  'CURATIVE' ",
+    function (err, res) {
+      if (err) {
+        console.log("Error: ", err);
+        result(err, res, null);
+      } else {
+        console.log("[+] Result : " + res);
+        result(err, res, null);
+      }
+    }
+  );
+};
+
 module.exports = { Demande };
