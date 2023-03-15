@@ -212,7 +212,7 @@ Demande.updateStatus = function (status, id_demande, result) {
 
 Demande.getSiteHs = function (result) {
   connect.query(
-    "SELECT * FROM demande, user WHERE type_demande =  'CURATIVE' WHERE user.id_user = demande.id_user ",
+    "SELECT * FROM demande, user WHERE type_demande =  'CURATIVE' AND user.id_user = demande.id_user ",
     function (err, res) {
       if (err) {
         console.log("Error: ", err);
