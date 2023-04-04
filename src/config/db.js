@@ -6,7 +6,7 @@ var connect = mysql.createPool({
   user: process.env.BD_USER || 'testdep_connect',
   password: process.env.BD_PASSWORD || 'Motdep@sse2022',
   database: process.env.DB_NAME || 'testdep_noc',
-  queueLimit: 0,
+  queueLimit: 50,
   waitForConnections: true,
   connectionLimit: 50000,
 });
