@@ -3,7 +3,7 @@ const mysql = require('mysql');
 
 var connect = mysql.createPool({
   host: process.env.DB_HOST || 'mysql-testdep.alwaysdata.net',
-  user: process.env.BD_USER || 'testdep',
+  user: process.env.BD_USER || 'testdep_dep',
   password: process.env.BD_PASSWORD || 'Motdep@sse2022',
   database: process.env.DB_NAME || 'testdep_noc',
   queueLimit: 50,
