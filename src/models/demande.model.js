@@ -76,9 +76,9 @@ Demande.getById = function (id_user, result) {
     function (err, res) {
       if (err) {
         console.log("[-] An error occurred : " + err);
-        res[0] = {
+       /*  res[0] = {
           error: err,
-        };
+        }; */
         result(err, res, null);
       } else {
         console.log("[+] Result : " + res);
