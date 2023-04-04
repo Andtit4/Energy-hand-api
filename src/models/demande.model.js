@@ -219,7 +219,7 @@ Demande.getSiteHs = function (result) {
         result(err, res, null);
       } else {
         console.log("[+] Result : " + res);
-        result(err, res, null);
+        result(err, res[0], null);
       }
     }
   );
