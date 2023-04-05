@@ -166,7 +166,7 @@ Demande.notified_end = function (showed, email, result) {
 
 Demande.notified_not = function (result) {
   connect.query(
-    "SELECT * FROM demande WHERE notified = 0",
+    "SELECT * FROM user, demande WHERE notified = 0 AND user.id_user = demande.id_user",
     function (err, res) {
       if (err) {
         console.log("[-] An error occurred : " + err);
