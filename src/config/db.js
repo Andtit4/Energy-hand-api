@@ -9,6 +9,7 @@ var connect = mysql.createPool({
   queueLimit: 1500,
   waitForConnections: true,
   connectionLimit: 50000,
+  debug: false
 });
 
 /* var connect = mysql.createConnection({
