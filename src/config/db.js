@@ -3,12 +3,12 @@ const mysql = require('mysql');
 
 var connect = mysql.createPool({
   host: process.env.DB_HOST || 'mysql-testdep.alwaysdata.net',
-  user: process.env.BD_USER || 'testdep_dep',
+  user: process.env.BD_USER || 'testdep',
   password: process.env.BD_PASSWORD || 'Motdep@sse2022',
   database: process.env.DB_NAME || 'testdep_noc',
-  queueLimit: 10,
+  queueLimit: 50,
   waitForConnections: true,
-  connectionLimit: 1000000,
+  connectionLimit: 190,
   debug: false,
   multipleStatements: true,
 });
