@@ -147,7 +147,7 @@ Demande.notified = function (email, result) {
 
 Demande.notified_end = function (showed, email, result) {
   connect.query(
-    "UPDATE traiter SET showed = ? WHERE email_user = ? ",
+    "SELECT * FROM user, demande WHERE demande.status = 'Prise_en_compte' AND user.id_user = demande.id_user",
     [showed, email],
     function (err, res) {
       if (err) {
