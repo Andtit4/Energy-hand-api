@@ -55,7 +55,7 @@ Demande.create = function (
 };
 
 Demande.all = function (result) {
-  connect.query("SELECT * FROM user, demande WHERE user.id_user = demande.id_user", function (err, res) {
+  connect.query("SELECT * FROM user, demande WHERE user.id_user = demande.id_user ORDER BY demande.id_demande DESC", function (err, res) {
     if (err) {
       console.log("[-] An error occurred : " + err);
       res[0] = {
