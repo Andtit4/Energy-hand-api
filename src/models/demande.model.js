@@ -145,10 +145,10 @@ Demande.notified = function (email, result) {
   );
 };
 
-Demande.notified_end = function (showed, email, result) {
+Demande.notified_end = function (id_user, result) {
   connect.query(
-    "SELECT * FROM user, demande WHERE demande.status = 'Prise_en_compte' AND user.id_user = demande.id_user",
-    [showed, email],
+    "SELECT * FROM user, demande WHERE demande.status = 'Prise_en_compte' AND user.id_user = demande.id_user AND user.id_user = ?",
+    [id_user],
     function (err, res) {
       if (err) {
         console.log("[-] An error occurred : " + err);
