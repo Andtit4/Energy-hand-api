@@ -106,7 +106,7 @@ exports.notified = function (req, res) {
 exports.notified_end = function (req, res) {
   console.log("[+] Controller get notifed demande");
   const id_user = req.query.id_user;
-  Demande.notified_end(showed, id_user, function (err, demande) {
+  Demande.notified_end( id_user, function (err, demande) {
     if (err) {
       res.send("[-] An error occured " + err);
       console.log("[-] An error occured " + err);
