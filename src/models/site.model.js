@@ -11,8 +11,22 @@ var Site = function (site) {
 };
 
 Site.getAll = function (result) {
-  connect.query("SELECT * FROM site"),
-    function (err, res) {
+  connect.query("SELECT * FROM site", function (err, res) {
+    if (err) {
+      console.log("[-] An error occurred : " + err);
+      res = {
+        error: err,
+      };
+      result(err, res, null);
+    } else {
+      console.log("[+] Result : " + res);
+      result(err, res, null);
+    }
+  });
+};
+
+Site.nb = function (result) {
+    connect.query("SELECT COUNT(*) AS nb FROM site", function (err, res) {
       if (err) {
         console.log("[-] An error occurred : " + err);
         res = {
@@ -23,8 +37,7 @@ Site.getAll = function (result) {
         console.log("[+] Result : " + res);
         result(err, res, null);
       }
-    };
-};
+    });
+  };
 
 module.exports = { Site };
-
