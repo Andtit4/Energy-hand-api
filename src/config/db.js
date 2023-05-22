@@ -2,10 +2,10 @@ require('dotenv').config();
 const mysql = require('mysql');
 
 var connect = mysql.createPool({
-  host: process.env.DB_HOST || 'mysql-testdep.alwaysdata.net',
-  user: process.env.BD_USER || 'testdep',
+  host: process.env.DB_HOST || 'mysql-prodb.alwaysdata.net',
+  user: process.env.BD_USER || 'prodb',
   password: process.env.BD_PASSWORD || 'Motdep@sse2022',
-  database: process.env.DB_NAME || 'testdep_noc',
+  database: process.env.DB_NAME || 'prodb_noc',
   queueLimit: 50,
   waitForConnections: true,
   connectionLimit: 190,
