@@ -23,3 +23,15 @@ exports.nb = function (req, res) {
     }
   });
 };
+
+exports.getState = function (req, res) {
+  const state = req.query.state;
+  Site.getState(state, function (err, site) {
+    if (err) {
+      res.send("[-] An error occured " + err);
+      console.log("[-] An error occured " + err);
+    } else {
+      res.send(site);
+    }
+  });
+};

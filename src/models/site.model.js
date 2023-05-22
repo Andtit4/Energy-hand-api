@@ -26,7 +26,25 @@ Site.getAll = function (result) {
 };
 
 Site.nb = function (result) {
-    connect.query("SELECT COUNT(*) AS nb FROM site", function (err, res) {
+  connect.query("SELECT COUNT(*) AS nb FROM site", function (err, res) {
+    if (err) {
+      console.log("[-] An error occurred : " + err);
+      res = {
+        error: err,
+      };
+      result(err, res, null);
+    } else {
+      console.log("[+] Result : " + res);
+      result(err, res, null);
+    }
+  });
+};
+
+Site.getState = function (state, result) {
+  connect.query(
+    "SELECT * FROM site WHERE state = ?",
+    state,
+    function (err, res) {
       if (err) {
         console.log("[-] An error occurred : " + err);
         res = {
@@ -37,7 +55,8 @@ Site.nb = function (result) {
         console.log("[+] Result : " + res);
         result(err, res, null);
       }
-    });
-  };
+    }
+  );
+};
 
 module.exports = { Site };
