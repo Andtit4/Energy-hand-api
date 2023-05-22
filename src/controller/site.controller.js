@@ -35,3 +35,16 @@ exports.getState = function (req, res) {
     }
   });
 };
+
+exports.nbState = function (req, res) {
+  const state = req.query.state;
+
+  Site.getNb(state, function (err, site) {
+    if (err) {
+      res.send("[-] An error occured " + err);
+      console.log("[-] An error occured " + err);
+    } else {
+      res.send(site);
+    }
+  });
+};

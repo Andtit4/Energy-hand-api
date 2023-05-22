@@ -42,7 +42,26 @@ Site.nb = function (result) {
 
 Site.getState = function (state, result) {
   connect.query(
-    "SELECT * FROM site WHERE state = ?",
+    "SELECT * FROM site, hors_service WHERE site.nom_site = hors_service.nom_site AND hors_service.state = ?;",
+    state,
+    function (err, res) {
+      if (err) {
+        console.log("[-] An error occurred : " + err);
+        res = {
+          error: err,
+        };
+        result(err, res, null);
+      } else {
+        console.log("[+] Result : " + res);
+        result(err, res, null);
+      }
+    }
+  );
+};
+
+Site.getNb = function (state, result) {
+  connect.query(
+    "SELECT COUNT(*) as nb FROM site, hors_service WHERE site.nom_site = hors_service.nom_site AND hors_service.state = ?",
     state,
     function (err, res) {
       if (err) {
