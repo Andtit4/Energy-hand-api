@@ -5,4 +5,5 @@ const jwt = require("jsonwebtoken");
 
 router.get("/auth", noController.auth);
 
+
 module.exports = router;
